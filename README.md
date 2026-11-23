@@ -2,6 +2,11 @@
 
 The pages run R in the browser; no installation is needed. The first load takes about a minute.
 
+## Slides (PDF)
+
+- [Lecture 1: Descriptive Statistics](https://manuhuth.github.io/biostat-workshop/slides/lecture1_descriptive_statistics.pdf)
+- [Lecture 2: Statistical Modelling](https://manuhuth.github.io/biostat-workshop/slides/lecture2_statistical_modelling.pdf)
+
 ## Exercise 1: Descriptive Statistics
 
 - [Room 1](https://manuhuth.github.io/biostat-workshop/exercise1/group1.html)
