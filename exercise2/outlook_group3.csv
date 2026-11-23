@@ -1,0 +1,6 @@
+"method","estimate","SE","df","CI_low","CI_high","p_value","SD_random","SD_residual"
+"lm: diet",1.56,0.38,18,0.762,2.358,0.00066,NA,NA
+"lm: diet + plate (fixed)",1.56,0.344,17,0.834,2.286,0.00029,NA,NA
+"mixed model: diet, random cage effect",1.56,0.38,18,0.762,2.358,0.00066,0,0.849
+"mixed model: diet, random plate effect",1.56,0.344,17,0.834,2.286,0.00029,0.483,0.769
+"mixed model: diet + start weight, random plate effect",1.572,0.275,16,0.99,2.155,3.2e-05,0.23,0.615

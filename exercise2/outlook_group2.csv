@@ -1,0 +1,4 @@
+"method","estimate","SE","df","CI_low","CI_high","p_value","SD_mouse","SD_residual"
+"lm on all wells (independent observations)",1.478,0.244,38,0.985,1.971,4.6e-07,NA,NA
+"lm on mouse means",1.477,0.352,18,0.737,2.216,0.00054,NA,NA
+"mixed model with random mouse effect",1.478,0.352,18,0.739,2.217,0.00054,0.782,0.116

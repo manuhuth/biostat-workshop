@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Exercise 2, Group 3</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="group3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="group3_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="group3_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="group3_files/libs/quarto-html/popper.min.js"></script>
+<script src="group3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="group3_files/libs/quarto-html/anchor.min.js"></script>
+<link href="group3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="group3_files/libs/quarto-html/quarto-syntax-highlighting-d0e378171f0b4185b1867fc3f28ef251.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="group3_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="group3_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="group3_files/libs/bootstrap/bootstrap-9371aa729b06997cbbeff1bcd8af59cd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="group3_files/libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="group3_files/libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script type="module" src="group3_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="group3_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Exercises</h2>
+   
+  <ul class="collapse">
+  <li><a href="#study" id="toc-study" class="nav-link active" data-scroll-target="#study">Study</a></li>
+  <li><a href="#exercise-1-data-design-and-hypotheses" id="toc-exercise-1-data-design-and-hypotheses" class="nav-link" data-scroll-target="#exercise-1-data-design-and-hypotheses">Exercise 1: Data, Design and Hypotheses</a></li>
+  <li><a href="#exercise-2-covariate-choice" id="toc-exercise-2-covariate-choice" class="nav-link" data-scroll-target="#exercise-2-covariate-choice">Exercise 2: Covariate Choice</a></li>
+  <li><a href="#exercise-3-two-group-model" id="toc-exercise-3-two-group-model" class="nav-link" data-scroll-target="#exercise-3-two-group-model">Exercise 3: Two-Group Model</a></li>
+  <li><a href="#exercise-4-model-assumptions" id="toc-exercise-4-model-assumptions" class="nav-link" data-scroll-target="#exercise-4-model-assumptions">Exercise 4: Model Assumptions</a></li>
+  <li><a href="#exercise-5-covariates-and-model-comparison" id="toc-exercise-5-covariates-and-model-comparison" class="nav-link" data-scroll-target="#exercise-5-covariates-and-model-comparison">Exercise 5: Covariates and Model Comparison</a></li>
+  <li><a href="#exercise-6-outlook-mixed-models-sprinter" id="toc-exercise-6-outlook-mixed-models-sprinter" class="nav-link" data-scroll-target="#exercise-6-outlook-mixed-models-sprinter">Exercise 6: Outlook, Mixed Models (Sprinter)</a></li>
+  <li><a href="#present" id="toc-present" class="nav-link" data-scroll-target="#present">Present</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header">
+<h1 class="title display-7">Exercise 2, Group 3</h1>
+
+</header>
+
+
+<div class="ex-header">
+<div class="kicker">
+Biostatistics workshop
+</div>
+<h1>
+Exercise 2
+</h1>
+<div class="group">
+Group 3 <span>·</span> Covariates and model choice
+</div>
+<p>
+Statistical modelling of the insulin data: two groups, covariates and model choice.
+</p>
+</div>
+<section id="study" class="level2">
+<h2 class="anchored" data-anchor-id="study">Study</h2>
+<div class="study-card">
+<div class="study-fig">
+<p><img src="figures/design.png" class="img-fluid" alt="Two cages with 10 mice each, diet and assay plate marked per mouse"></p>
+</div>
+<div class="study-text">
+<p>The study of Exercise 1 is analysed further: plasma insulin (ng/ml) at the end of the study in 20 male C57BL/6 mice, housed in two cages (A, B) of 10 mice, 5 on chow and 5 on a high-fat diet (HFD) in each cage, measured by ELISA on two plates of 10 samples (5 chow and 5 HFD each). The data contain no missing values and no outliers. Each mouse has one insulin value, measured at week 12; the analyses can be done on the log2 scale or on the original scale. Start weight (g) and fasting glucose (mg/dl) were recorded at the start of the study (week 0), before the diets began; final weight (g) was recorded at week 12. Each row of the data is one mouse.</p>
+<div class="btn-pair">
+<p><a href="ex2_group3.csv" class="btn btn-primary" download="ex2_group3.csv">Download data (CSV)</a></p>
+</div>
+</div>
+</div>
+<div class="lead-note">
+<p>For each question, choose the analysis, the plot and the numbers you consider suitable. In the presentation, explain why you chose them and give your answer. The page runs R in the browser; the first load takes some time. Outputs update when a selection changes. Exercises marked Sprinter are optional, for groups that finish early.</p>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="56" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 55;"><span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>HYP <span class="op">=</span> [<span class="st">"μ_HFD = μ_chow"</span><span class="op">,</span> <span class="st">"μ_HFD ≠ μ_chow (two-sided)"</span><span class="op">,</span> <span class="st">"μ_HFD &gt; μ_chow (one-sided)"</span><span class="op">,</span> <span class="st">"x̄_HFD = x̄_chow"</span><span class="op">,</span> <span class="st">"x̄_HFD ≠ x̄_chow"</span><span class="op">,</span> <span class="st">"β_diet = 0"</span><span class="op">,</span> <span class="st">"β_diet ≠ 0"</span><span class="op">,</span> <span class="st">"β_diet = 0 at equal values of the other covariates"</span><span class="op">,</span> <span class="st">"insulin is normally distributed"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell" data-edit="false" data-runbutton="false" data-startover="false">
+<div>
+<div id="webr-1" class="exercise-cell">
+
+</div>
+<script type="webr-1-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6NC4yLCJmaWctd2lkdGgiOjgsInJ1bmJ1dHRvbiI6ZmFsc2UsInN0YXJ0b3ZlciI6ZmFsc2V9LCJjb2RlIjoic291cmNlKFwiaGVscGVycy5SXCIpXG5IWVBfVFhUIDwtIGxpc3QoXCLOvF9IRkQgPSDOvF9jaG93XCIgPSBcIs68OiBwb3B1bGF0aW9uIG1lYW4gb2YgbG9nMiBpbnN1bGluIGluIGEgZGlldCBncm91cC4gVGhlIHN0YXRlbWVudCBzYXlzIHRoYXQgdGhlIGRpZXQgZG9lcyBub3QgY2hhbmdlIHRoaXMgbWVhbi5cIixcbiAgXCLOvF9IRkQg4omgIM68X2Nob3cgKHR3by1zaWRlZClcIiA9IFwiVGhlIHBvcHVsYXRpb24gbWVhbnMgZGlmZmVyLCBpbiBlaXRoZXIgZGlyZWN0aW9uLlwiLFxuICBcIs68X0hGRCA+IM68X2Nob3cgKG9uZS1zaWRlZClcIiA9IFwiVGhlIHBvcHVsYXRpb24gbWVhbiB1bmRlciBIRkQgaXMgbGFyZ2VyIHRoYW4gdW5kZXIgY2hvdzsgYSBkZWNyZWFzZSBpcyBub3QgY29uc2lkZXJlZC4gVGhlIGRpcmVjdGlvbiBoYXMgdG8gYmUgZml4ZWQgYmVmb3JlIHRoZSBkYXRhIGFyZSBzZWVuLlwiLFxuICBcInjMhF9IRkQgPSB4zIRfY2hvd1wiID0gXCJ4zIQ6IHNhbXBsZSBtZWFuIG9mIHRoZSBtaWNlIGluIGEgZGlldCBncm91cCwgY29tcHV0ZWQgZnJvbSB0aGUgZGF0YS5cIixcbiAgXCJ4zIRfSEZEIOKJoCB4zIRfY2hvd1wiID0gXCJ4zIQ6IHNhbXBsZSBtZWFuIG9mIHRoZSBtaWNlIGluIGEgZGlldCBncm91cCwgY29tcHV0ZWQgZnJvbSB0aGUgZGF0YS5cIixcbiAgXCLOsl9kaWV0ID0gMFwiID0gXCLOsl9kaWV0OiBjb2VmZmljaWVudCBvZiBkaWV0IGluIGEgbGluZWFyIG1vZGVsLCBpLmUuIHRoZSBkaWZmZXJlbmNlIEhGRCDiiJIgY2hvdyBhdCBmaXhlZCB2YWx1ZXMgb2YgdGhlIG90aGVyIGNvdmFyaWF0ZXMgaW4gdGhlIG1vZGVsLiBUaGUgc3RhdGVtZW50IHNheXMgdGhhdCB0aGlzIGRpZmZlcmVuY2UgaXMgMC5cIixcbiAgXCLOsl9kaWV0IOKJoCAwXCIgPSBcIlRoZSBkaWV0IGNvZWZmaWNpZW50IGRpZmZlcnMgZnJvbSAwLCBpbiBlaXRoZXIgZGlyZWN0aW9uLlwiLFxuICBcIs6yX2RpZXQgPSAwIGF0IGVxdWFsIHZhbHVlcyBvZiB0aGUgb3RoZXIgY292YXJpYXRlc1wiID0gXCLOsl9kaWV0OiBjb2VmZmljaWVudCBvZiBkaWV0IGluIGEgbGluZWFyIG1vZGVsIHRoYXQgY29udGFpbnMgZnVydGhlciBjb3ZhcmlhdGVzLiBJdCBpcyB0aGUgZGlmZmVyZW5jZSBIRkQg4oiSIGNob3cgYmV0d2VlbiBtaWNlIHdpdGggZXF1YWwgdmFsdWVzIG9mIHRoZXNlIGNvdmFyaWF0ZXMuIFRoZSBzdGF0ZW1lbnQgc2F5cyB0aGF0IHRoaXMgZGlmZmVyZW5jZSBpcyAwLlwiLFxuICBcImluc3VsaW4gaXMgbm9ybWFsbHkgZGlzdHJpYnV0ZWRcIiA9IFwiQSBzdGF0ZW1lbnQgYWJvdXQgdGhlIGRpc3RyaWJ1dGlvbiBvZiB0aGUgdmFsdWVzLiBJdCBpcyB0aGUgbnVsbCBoeXBvdGhlc2lzIG9mIHRoZSBTaGFwaXJvLVdpbGsgdGVzdCAoRXhlcmNpc2UgNCkuXCIpXG54IDwtIGxvYWQzKCk7IGQgPC0geCRkOyBtIDwtIHgkbTsgdyA8LSB4JHdcbmNhdChcIkRhdGEgKGZpcnN0IDEyIG9mIFwiLCBucm93KGQpLCBcIiByb3dzKVxcblwiLCBzZXAgPSBcIlwiKTsgc2hvdyhoZWFkKGQsIDEyKSkifQ==
+</script>
+</div>
+</div>
+</section>
+<section id="exercise-1-data-design-and-hypotheses" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-data-design-and-hypotheses">Exercise 1: Data, Design and Hypotheses</h2>
+<div class="item">
+<div class="question">
+<p><strong>1.1</strong> What does one row of the data represent, and how many rows and how many mice are there per diet, cage and plate?</p>
+</div>
+<div class="inputs">
+<p><span class="panel-title">Choose grouping</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="93" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 92;"><span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>viewof b11 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"diet"</span><span class="op">,</span> <span class="st">"cage"</span><span class="op">,</span> <span class="st">"plate"</span><span class="op">,</span> <span class="st">"mouse_id"</span><span class="op">,</span> <span class="st">"diet x cage"</span><span class="op">,</span> <span class="st">"diet x plate"</span><span class="op">,</span> <span class="st">"cage x plate"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"1.1 Count rows by"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-edit="false" data-runbutton="false" data-startover="false" data-input="b11">
+<div>
+<div id="webr-2" class="exercise-cell">
+
+</div>
+<script type="webr-2-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6NC4yLCJmaWctd2lkdGgiOjgsImlucHV0IjpbImIxMSJdLCJydW5idXR0b24iOmZhbHNlLCJzdGFydG92ZXIiOmZhbHNlfSwiY29kZSI6ImNvdW50cyhkLCBiMTEpIn0=
+</script>
+</div>
+</div>
+<div class="answer">
+<p><strong>Answer 1.1.</strong> (a) Chosen grouping and the reason. (b) Answer to the question.</p>
+</div>
+</div>
+<div class="item">
+<div class="question">
+<p><strong>1.2</strong> Which null hypothesis and which alternative hypothesis do you test for the effect of the diet on insulin?</p>
+</div>
+<div class="inputs">
+<p><span class="panel-title">Choose hypotheses</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="126" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>viewof h0_12 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(HYP<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"1.2 Null hypothesis H0"</span>})</span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>viewof h1_12 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(HYP<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"1.2 Alternative H1"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> HYP[<span class="dv">1</span>]})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-edit="false" data-runbutton="false" data-startover="false" data-input="[&quot;h0_12&quot;,&quot;h1_12&quot;]">
+<div>
+<div id="webr-3" class="exercise-cell">
+
+</div>
+<script type="webr-3-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6NC4yLCJmaWctd2lkdGgiOjgsImlucHV0IjpbImgwXzEyIiwiaDFfMTIiXSwicnVuYnV0dG9uIjpmYWxzZSwic3RhcnRvdmVyIjpmYWxzZX0sImNvZGUiOiJjYXQoXCJIMDogXCIsIGgwXzEyLCBcIlxcblwiLCBIWVBfVFhUW1toMF8xMl1dLCBcIlxcblxcbkgxOiBcIiwgaDFfMTIsIFwiXFxuXCIsIEhZUF9UWFRbW2gxXzEyXV0sIFwiXFxuXCIsIHNlcCA9IFwiXCIpIn0=
+</script>
+</div>
+</div>
+<div class="answer">
+<p><strong>Answer 1.2.</strong> (a) Chosen null and alternative hypothesis, and the reason. (b) Answer to the question.</p>
+</div>
+</div>
+</section>
+<section id="exercise-2-covariate-choice" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-covariate-choice">Exercise 2: Covariate Choice</h2>
+<div class="item">
+<div class="question">
+<p><strong>2.1</strong> Which variables were measured before and which after the start of the diet, and how do they differ between the diets?</p>
+</div>
+<div class="inputs">
+<p><span class="panel-title">Choose plot and numbers</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="162" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 161;"><span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>viewof p21 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"(none)"</span><span class="op">,</span> <span class="st">"Dot plot, start weight"</span><span class="op">,</span> <span class="st">"Dot plot, fasting glucose (week 0)"</span><span class="op">,</span> <span class="st">"Dot plot, final weight"</span><span class="op">,</span> <span class="st">"Boxplot, start weight"</span><span class="op">,</span> <span class="st">"Boxplot, fasting glucose (week 0)"</span><span class="op">,</span> <span class="st">"Boxplot, final weight"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"2.1 Plot"</span>})</span>
+<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a>viewof s21 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>([<span class="st">"mean and SD per diet: start weight"</span><span class="op">,</span> <span class="st">"mean and SD per diet: fasting glucose (week 0)"</span><span class="op">,</span> <span class="st">"mean and SD per diet: final weight"</span><span class="op">,</span> <span class="st">"difference HFD - chow with 95% CI: start weight"</span><span class="op">,</span> <span class="st">"difference HFD - chow with 95% CI: fasting glucose (week 0)"</span><span class="op">,</span> <span class="st">"difference HFD - chow with 95% CI: final weight"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"2.1 Numbers"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> []})</span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a>s21j <span class="op">=</span> s21<span class="op">.</span><span class="fu">join</span>(<span class="st">","</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-edit="false" data-runbutton="false" data-startover="false" data-input="[&quot;p21&quot;,&quot;s21j&quot;]">
+<div>
+<div id="webr-4" class="exercise-cell">
+
+</div>
+<script type="webr-4-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6NC4yLCJmaWctd2lkdGgiOjgsImlucHV0IjpbInAyMSIsInMyMWoiXSwicnVuYnV0dG9uIjpmYWxzZSwic3RhcnRvdmVyIjpmYWxzZX0sImNvZGUiOiJjb3ZfaXRlbShtLCBwMjEsIHMyMWopIn0=
+</script>
+</div>
+</div>
+<div class="answer">
+<p><strong>Answer 2.1.</strong> (a) Chosen plot and numbers, and the reason for the choice. (b) Answer to the question.</p>
+</div>
+</div>
+<div class="item">
+<div class="question">
+<p><strong>2.2</strong> How does each covariate relate to insulin?</p>
+</div>
+<div class="inputs">
+<p><span class="panel-title">Choose plot, numbers and scale</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="197" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 196;"><span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a>viewof p22 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"(none)"</span><span class="op">,</span> <span class="st">"Scatter, insulin against start weight"</span><span class="op">,</span> <span class="st">"Scatter, insulin against fasting glucose (week 0)"</span><span class="op">,</span> <span class="st">"Scatter, insulin against final weight"</span><span class="op">,</span> <span class="st">"Dot plot, insulin by plate"</span><span class="op">,</span> <span class="st">"Dot plot, insulin by cage"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"2.2 Plot"</span>})</span>
+<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a>viewof s22 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>([<span class="st">"correlation with start weight, all mice"</span><span class="op">,</span> <span class="st">"correlation with fasting glucose (week 0), all mice"</span><span class="op">,</span> <span class="st">"correlation with final weight, all mice"</span><span class="op">,</span> <span class="st">"correlation with start weight, within chow"</span><span class="op">,</span> <span class="st">"correlation with fasting glucose (week 0), within chow"</span><span class="op">,</span> <span class="st">"correlation with final weight, within chow"</span><span class="op">,</span> <span class="st">"correlation with start weight, within HFD"</span><span class="op">,</span> <span class="st">"correlation with fasting glucose (week 0), within HFD"</span><span class="op">,</span> <span class="st">"correlation with final weight, within HFD"</span><span class="op">,</span> <span class="st">"mean insulin per plate"</span><span class="op">,</span> <span class="st">"mean insulin per cage"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"2.2 Numbers"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> []})</span>
+<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a>s22j <span class="op">=</span> s22<span class="op">.</span><span class="fu">join</span>(<span class="st">","</span>)</span>
+<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a>viewof c22 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"original"</span><span class="op">,</span> <span class="st">"log2"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"2.2 Scale"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-edit="false" data-runbutton="false" data-startover="false" data-input="[&quot;p22&quot;,&quot;s22j&quot;,&quot;c22&quot;]">
+<div>
+<div id="webr-5" class="exercise-cell">
+
+</div>
+<script type="webr-5-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6NC4yLCJmaWctd2lkdGgiOjgsImlucHV0IjpbInAyMiIsInMyMmoiLCJjMjIiXSwicnVuYnV0dG9uIjpmYWxzZSwic3RhcnRvdmVyIjpmYWxzZX0sImNvZGUiOiJyZWwzX2l0ZW0obSwgcDIyLCBzMjJqLCBjMjIpIn0=
+</script>
+</div>
+</div>
+<div class="answer">
+<p><strong>Answer 2.2.</strong> (a) Chosen plot, numbers and scale, and the reason for the choice. (b) Answer to the question.</p>
+</div>
+</div>
+<div class="item">
+<div class="question">
+<p><strong>2.3</strong> Which covariates do you include in the model for the diet effect, and why?</p>
+</div>
+<div class="inputs">
+<p><span class="panel-title">Choose covariates and display</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="234" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 233;"><span id="cb6-234"><a href="#cb6-234" aria-hidden="true" tabindex="-1"></a>viewof cv23 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>([<span class="st">"start weight"</span><span class="op">,</span> <span class="st">"fasting glucose (week 0)"</span><span class="op">,</span> <span class="st">"final weight"</span><span class="op">,</span> <span class="st">"plate"</span><span class="op">,</span> <span class="st">"cage"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"2.3 Covariates (diet is always in the model)"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> []})</span>
+<span id="cb6-235"><a href="#cb6-235" aria-hidden="true" tabindex="-1"></a>cv23j <span class="op">=</span> cv23<span class="op">.</span><span class="fu">join</span>(<span class="st">","</span>)</span>
+<span id="cb6-236"><a href="#cb6-236" aria-hidden="true" tabindex="-1"></a>viewof sh23 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>([<span class="st">"coefficient table"</span><span class="op">,</span> <span class="st">"diet effect with and without the chosen covariates"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"2.3 Display"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> []})</span>
+<span id="cb6-237"><a href="#cb6-237" aria-hidden="true" tabindex="-1"></a>sh23j <span class="op">=</span> sh23<span class="op">.</span><span class="fu">join</span>(<span class="st">","</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-edit="false" data-runbutton="false" data-startover="false" data-input="[&quot;cv23j&quot;,&quot;sh23j&quot;]">
+<div>
+<div id="webr-6" class="exercise-cell">
+
+</div>
+<script type="webr-6-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6NC4yLCJmaWctd2lkdGgiOjgsImlucHV0IjpbImN2MjNqIiwic2gyM2oiXSwicnVuYnV0dG9uIjpmYWxzZSwic3RhcnRvdmVyIjpmYWxzZX0sImNvZGUiOiJjb3ZfbW9kZWwobSwgY3YyM2osIHNoMjNqKSJ9
+</script>
+</div>
+</div>
+<div class="answer">
+<p><strong>Answer 2.3.</strong> (a) Chosen covariates and the reason for including or excluding each. (b) Answer to the question.</p>
+</div>
+</div>
+</section>
+<section id="exercise-3-two-group-model" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3-two-group-model">Exercise 3: Two-Group Model</h2>
+<div class="item">
+<div class="question">
+<p><strong>3.1</strong> How large is the diet effect, and how certain is it?</p>
+</div>
+<div class="inputs">
+<p><span class="panel-title">Choose method, scale, plot and numbers</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="272" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 271;"><span id="cb7-272"><a href="#cb7-272" aria-hidden="true" tabindex="-1"></a>viewof m31 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"linear model (equal variances)"</span><span class="op">,</span> <span class="st">"Welch t-test"</span><span class="op">,</span> <span class="st">"Wilcoxon rank-sum test"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"3.1 Method"</span>})</span>
+<span id="cb7-273"><a href="#cb7-273" aria-hidden="true" tabindex="-1"></a>viewof c31 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"original"</span><span class="op">,</span> <span class="st">"log2"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"3.1 Scale"</span>})</span>
+<span id="cb7-274"><a href="#cb7-274" aria-hidden="true" tabindex="-1"></a>viewof p31 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"(none)"</span><span class="op">,</span> <span class="st">"Dot plot, by diet"</span><span class="op">,</span> <span class="st">"Boxplot, by diet"</span><span class="op">,</span> <span class="st">"Mean and 95% CI, by diet"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"3.1 Plot"</span>})</span>
+<span id="cb7-275"><a href="#cb7-275" aria-hidden="true" tabindex="-1"></a>viewof s31 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>([<span class="st">"estimate"</span><span class="op">,</span> <span class="st">"SE"</span><span class="op">,</span> <span class="st">"t statistic"</span><span class="op">,</span> <span class="st">"df"</span><span class="op">,</span> <span class="st">"95% CI"</span><span class="op">,</span> <span class="st">"p-value"</span><span class="op">,</span> <span class="st">"fold change with 95% CI (log2 scale)"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"3.1 Numbers"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> []})</span>
+<span id="cb7-276"><a href="#cb7-276" aria-hidden="true" tabindex="-1"></a>s31j <span class="op">=</span> s31<span class="op">.</span><span class="fu">join</span>(<span class="st">","</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-edit="false" data-runbutton="false" data-startover="false" data-input="[&quot;m31&quot;,&quot;c31&quot;,&quot;p31&quot;,&quot;s31j&quot;]">
+<div>
+<div id="webr-7" class="exercise-cell">
+
+</div>
+<script type="webr-7-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6NC4yLCJmaWctd2lkdGgiOjgsImlucHV0IjpbIm0zMSIsImMzMSIsInAzMSIsInMzMWoiXSwicnVuYnV0dG9uIjpmYWxzZSwic3RhcnRvdmVyIjpmYWxzZX0sImNvZGUiOiJ0d29fZ3JvdXAobSwgYzMxLCBtMzEsIHMzMWosIHAzMSkifQ==
+</script>
+</div>
+</div>
+<div class="answer">
+<p><strong>Answer 3.1.</strong> (a) Chosen plot and numbers, and the reason for the choice. (b) Answer to the question.</p>
+</div>
+</div>
+</section>
+<section id="exercise-4-model-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4-model-assumptions">Exercise 4: Model Assumptions</h2>
+<div class="item">
+<div class="question">
+<p><strong>4.1</strong> Are the model assumptions met?</p>
+</div>
+<div class="inputs">
+<p><span class="panel-title">Choose plot and tests</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="313" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 312;"><span id="cb8-313"><a href="#cb8-313" aria-hidden="true" tabindex="-1"></a>viewof p41 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"(none)"</span><span class="op">,</span> <span class="st">"QQ plot of the residuals"</span><span class="op">,</span> <span class="st">"Histogram of the residuals"</span><span class="op">,</span> <span class="st">"Residuals against fitted values"</span><span class="op">,</span> <span class="st">"QQ plot of the raw values (diets pooled)"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"4.1 Plot"</span>})</span>
+<span id="cb8-314"><a href="#cb8-314" aria-hidden="true" tabindex="-1"></a>viewof s41 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>([<span class="st">"Shapiro-Wilk test of the residuals"</span><span class="op">,</span> <span class="st">"Shapiro-Wilk test of the raw values (diets pooled)"</span><span class="op">,</span> <span class="st">"SD per diet"</span><span class="op">,</span> <span class="st">"skewness of the residuals"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"4.1 Tests"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> []})</span>
+<span id="cb8-315"><a href="#cb8-315" aria-hidden="true" tabindex="-1"></a>s41j <span class="op">=</span> s41<span class="op">.</span><span class="fu">join</span>(<span class="st">","</span>)</span>
+<span id="cb8-316"><a href="#cb8-316" aria-hidden="true" tabindex="-1"></a>viewof c41 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"original"</span><span class="op">,</span> <span class="st">"log2"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"4.1 Scale"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-edit="false" data-runbutton="false" data-startover="false" data-input="[&quot;p41&quot;,&quot;s41j&quot;,&quot;c41&quot;]">
+<div>
+<div id="webr-8" class="exercise-cell">
+
+</div>
+<script type="webr-8-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6NC4yLCJmaWctd2lkdGgiOjgsImlucHV0IjpbInA0MSIsInM0MWoiLCJjNDEiXSwicnVuYnV0dG9uIjpmYWxzZSwic3RhcnRvdmVyIjpmYWxzZX0sImNvZGUiOiJhc3N1bXAobSwgYzQxLCBwNDEsIHM0MWopIn0=
+</script>
+</div>
+</div>
+<div class="answer">
+<p><strong>Answer 4.1.</strong> (a) Chosen plot, tests and scale, and the reason for the choice. (b) Answer to the question.</p>
+</div>
+</div>
+</section>
+<section id="exercise-5-covariates-and-model-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5-covariates-and-model-comparison">Exercise 5: Covariates and Model Comparison</h2>
+<div class="item">
+<div class="question">
+<p><strong>5.1</strong> How do R2, adjusted R2, AIC and BIC change when covariates are added to the model?</p>
+<p>Models are added to the comparison table of 5.2 with the button.</p>
+</div>
+<div class="inputs">
+<p><span class="panel-title">Choose covariates and display</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="354" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 353;"><span id="cb9-354"><a href="#cb9-354" aria-hidden="true" tabindex="-1"></a>viewof cv51 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>([<span class="st">"start weight"</span><span class="op">,</span> <span class="st">"fasting glucose (week 0)"</span><span class="op">,</span> <span class="st">"final weight"</span><span class="op">,</span> <span class="st">"plate"</span><span class="op">,</span> <span class="st">"cage"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"5.1 Covariates (diet is always in the model)"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> []})</span>
+<span id="cb9-355"><a href="#cb9-355" aria-hidden="true" tabindex="-1"></a>cv51j <span class="op">=</span> cv51<span class="op">.</span><span class="fu">join</span>(<span class="st">","</span>)</span>
+<span id="cb9-356"><a href="#cb9-356" aria-hidden="true" tabindex="-1"></a>viewof c51 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"log2"</span><span class="op">,</span> <span class="st">"original"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"5.1 Scale"</span>})</span>
+<span id="cb9-357"><a href="#cb9-357" aria-hidden="true" tabindex="-1"></a>o51 <span class="op">=</span> <span class="st">"mice (20 rows)"</span></span>
+<span id="cb9-358"><a href="#cb9-358" aria-hidden="true" tabindex="-1"></a>viewof sh51 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>([<span class="st">"coefficient table"</span><span class="op">,</span> <span class="st">"fit statistics"</span><span class="op">,</span> <span class="st">"QQ plot of the residuals"</span><span class="op">,</span> <span class="st">"residuals against fitted values"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"5.1 Display"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> []})</span>
+<span id="cb9-359"><a href="#cb9-359" aria-hidden="true" tabindex="-1"></a>sh51j <span class="op">=</span> sh51<span class="op">.</span><span class="fu">join</span>(<span class="st">","</span>)</span>
+<span id="cb9-360"><a href="#cb9-360" aria-hidden="true" tabindex="-1"></a>state <span class="op">=</span> ({})</span>
+<span id="cb9-361"><a href="#cb9-361" aria-hidden="true" tabindex="-1"></a>{ state<span class="op">.</span><span class="at">spec</span> <span class="op">=</span> [cv51<span class="op">.</span><span class="fu">join</span>(<span class="st">"+"</span>)<span class="op">,</span> c51<span class="op">,</span> o51]<span class="op">.</span><span class="fu">join</span>(<span class="st">";"</span>)<span class="op">;</span> <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;span&gt;&lt;/span&gt;`</span><span class="op">;</span> }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-8" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="362" data-source-offset="-582"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 361;"><span id="cb10-362"><a href="#cb10-362" aria-hidden="true" tabindex="-1"></a>viewof hist51 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>([[<span class="st">"Add current model to comparison"</span><span class="op">,</span> v <span class="kw">=&gt;</span> [<span class="op">...</span>v<span class="op">,</span> state<span class="op">.</span><span class="at">spec</span>]]<span class="op">,</span> [<span class="st">"Clear comparison"</span><span class="op">,</span> v <span class="kw">=&gt;</span> []]]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> []})</span>
+<span id="cb10-363"><a href="#cb10-363" aria-hidden="true" tabindex="-1"></a>hist51j <span class="op">=</span> hist51<span class="op">.</span><span class="fu">join</span>(<span class="st">"|"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-edit="false" data-runbutton="false" data-startover="false" data-input="[&quot;cv51j&quot;,&quot;c51&quot;,&quot;sh51j&quot;]">
+<div>
+<div id="webr-9" class="exercise-cell">
+
+</div>
+<script type="webr-9-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6NC4yLCJmaWctd2lkdGgiOjgsImlucHV0IjpbImN2NTFqIiwiYzUxIiwic2g1MWoiXSwicnVuYnV0dG9uIjpmYWxzZSwic3RhcnRvdmVyIjpmYWxzZX0sImNvZGUiOiJtb2RlbF9yZXBvcnQobSwgdywgcGFzdGUoYyhwYXN0ZShzcGwoY3Y1MWopLCBjb2xsYXBzZSA9IFwiK1wiKSwgYzUxLCBcIm1pY2UgKDIwIHJvd3MpXCIpLCBjb2xsYXBzZSA9IFwiO1wiKSwgc2g1MWopIn0=
+</script>
+</div>
+</div>
+<div class="answer">
+<p><strong>Answer 5.1.</strong> (a) Chosen covariates and display, and the reason for the choice. (b) Answer to the question.</p>
+</div>
+</div>
+<div class="item">
+<div class="question">
+<p><strong>5.2</strong> Which model do you choose, and on what basis?</p>
+</div>
+<div class="inputs">
+<p><span class="panel-title">Choose columns of the comparison table</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="397" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 396;"><span id="cb11-397"><a href="#cb11-397" aria-hidden="true" tabindex="-1"></a>viewof cc52 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>([<span class="st">"covariates"</span><span class="op">,</span> <span class="st">"scale"</span><span class="op">,</span> <span class="st">"diet estimate"</span><span class="op">,</span> <span class="st">"SE"</span><span class="op">,</span> <span class="st">"95% CI"</span><span class="op">,</span> <span class="st">"p-value"</span><span class="op">,</span> <span class="st">"R2"</span><span class="op">,</span> <span class="st">"adjusted R2"</span><span class="op">,</span> <span class="st">"AIC"</span><span class="op">,</span> <span class="st">"BIC"</span><span class="op">,</span> <span class="st">"n"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"5.2 Columns"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> []})</span>
+<span id="cb11-398"><a href="#cb11-398" aria-hidden="true" tabindex="-1"></a>cc52j <span class="op">=</span> cc52<span class="op">.</span><span class="fu">join</span>(<span class="st">","</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-edit="false" data-runbutton="false" data-startover="false" data-input="[&quot;hist51j&quot;,&quot;cc52j&quot;]">
+<div>
+<div id="webr-10" class="exercise-cell">
+
+</div>
+<script type="webr-10-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6NC4yLCJmaWctd2lkdGgiOjgsImlucHV0IjpbImhpc3Q1MWoiLCJjYzUyaiJdLCJydW5idXR0b24iOmZhbHNlLCJzdGFydG92ZXIiOmZhbHNlfSwiY29kZSI6ImNvbXBhcmVfbW9kZWxzKG0sIHcsIGhpc3Q1MWosIGNjNTJqKSJ9
+</script>
+</div>
+</div>
+<div class="answer">
+<p><strong>Answer 5.2.</strong> (a) Chosen model and the basis for the choice. (b) Answer to the question.</p>
+</div>
+</div>
+</section>
+<section id="exercise-6-outlook-mixed-models-sprinter" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-6-outlook-mixed-models-sprinter">Exercise 6: Outlook, Mixed Models (Sprinter)</h2>
+<div class="lead-note">
+<p>Sprinter exercise: optional, for groups that have finished Exercises 1 to 5.</p>
+</div>
+<div class="item">
+<div class="question">
+<p><strong>6.1</strong> How do estimate and SE of the diet effect change when cage or plate is modelled as a random effect instead of a fixed covariate?</p>
+<p>Random effect: each cage or plate has its own level, and the model estimates the spread of these levels.</p>
+</div>
+<div class="inputs">
+<p><span class="panel-title">Choose methods and columns</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="439" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 438;"><span id="cb12-439"><a href="#cb12-439" aria-hidden="true" tabindex="-1"></a>viewof m61 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>([<span class="st">"lm: diet"</span><span class="op">,</span> <span class="st">"lm: diet + plate (fixed)"</span><span class="op">,</span> <span class="st">"mixed model: diet, random cage effect"</span><span class="op">,</span> <span class="st">"mixed model: diet, random plate effect"</span><span class="op">,</span> <span class="st">"mixed model: diet + start weight, random plate effect"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"6.1 Methods"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> []})</span>
+<span id="cb12-440"><a href="#cb12-440" aria-hidden="true" tabindex="-1"></a>m61j <span class="op">=</span> m61<span class="op">.</span><span class="fu">join</span>(<span class="st">"|"</span>)</span>
+<span id="cb12-441"><a href="#cb12-441" aria-hidden="true" tabindex="-1"></a>viewof c61 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>([<span class="st">"estimate"</span><span class="op">,</span> <span class="st">"SE"</span><span class="op">,</span> <span class="st">"df"</span><span class="op">,</span> <span class="st">"CI_low"</span><span class="op">,</span> <span class="st">"CI_high"</span><span class="op">,</span> <span class="st">"p_value"</span><span class="op">,</span> <span class="st">"SD_random"</span><span class="op">,</span> <span class="st">"SD_residual"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"6.1 Columns"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> []})</span>
+<span id="cb12-442"><a href="#cb12-442" aria-hidden="true" tabindex="-1"></a>c61j <span class="op">=</span> c61<span class="op">.</span><span class="fu">join</span>(<span class="st">","</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-11-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-11-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-11-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-11-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-edit="false" data-runbutton="false" data-startover="false" data-input="[&quot;m61j&quot;,&quot;c61j&quot;]">
+<div>
+<div id="webr-11" class="exercise-cell">
+
+</div>
+<script type="webr-11-contents">
+eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZmlnLWhlaWdodCI6NC4yLCJmaWctd2lkdGgiOjgsImlucHV0IjpbIm02MWoiLCJjNjFqIl0sInJ1bmJ1dHRvbiI6ZmFsc2UsInN0YXJ0b3ZlciI6ZmFsc2V9LCJjb2RlIjoib3V0bG9vaygzLCBtNjFqLCBjNjFqLCBjKFwiZXN0aW1hdGVcIiwgXCJTRVwiLCBcImRmXCIsIFwiQ0lfbG93XCIsIFwiQ0lfaGlnaFwiLCBcInBfdmFsdWVcIiwgXCJTRF9yYW5kb21cIiwgXCJTRF9yZXNpZHVhbFwiKSlcbmNhdChcIlxcblByZWNvbXB1dGVkIGluIFIgKGxtZTQsIGxtZXJUZXN0KSBvbiB0aGUgbG9nMiBzY2FsZTsgdGhlIHRhYmxlIGlzIHN0YXRpYy4gU0RfcmFuZG9tOiBTRCBvZiB0aGUgY2FnZSBvciBwbGF0ZSBsZXZlbHMuXFxuXCIpIn0=
+</script>
+</div>
+</div>
+<div class="answer">
+<p><strong>Answer 6.1.</strong> (a) Chosen methods and columns, and the reason for the choice. (b) Answer to the question.</p>
+</div>
+</div>
+</section>
+<section id="present" class="level2">
+<h2 class="anchored" data-anchor-id="present">Present</h2>
+<div class="present">
+<p>Present 1.1 to 5.2 as far as time allows, and in any case 1.2, 2.3 and 5.2; groups that worked on the sprinter exercise also present 6.1. Each presentation shows the chosen analyses, plots, numbers and models, the reasons and the answers (a) and (b).</p>
+</div>
+<script type="webr-data">
+eyJvcHRpb25zIjp7ImJhc2VVcmwiOiJodHRwczovL3dlYnIuci13YXNtLm9yZy92MC42LjAvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsiZXZhbHVhdGUiLCJrbml0ciIsImh0bWx0b29scyJdLCJyZXBvcyI6W119LCJyZW5kZXJfZGYiOiJkZWZhdWx0In0=
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xMSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJfd2Vicl92YWx1ZV8xMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRSLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xMS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXZhbHVhdGlvbiBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHtcbiAgICBpZDogXCJ3ZWJyLTExLWNvbnRlbnRzXCIsXG4gICAgZWNobzogdHJ1ZSxcbiAgICBvdXRwdXQ6IHRydWVcbiAgfSwgYmxvY2suYXR0cik7XG5cbiAgLy8gRXZhbHVhdGUgdGhlIHByb3ZpZGVkIFIgY29kZVxuICBjb25zdCByZXN1bHQgPSB3ZWJST2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7bTYxaiwgYzYxan0pO1xuXG4gIC8vIEVhcmx5IHlpZWxkIHdoaWxlIHdlIHdhaXQgZm9yIHRoZSBmaXJzdCBldmFsdWF0aW9uIGFuZCByZW5kZXJcbiAgaWYgKG9wdGlvbnMub3V0cHV0ICYmICEoXCIxMVwiIGluIHdlYlJPanMucmVuZGVyZWRPanMpKSB7XG4gICAgY29uc3QgY29udGFpbmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcbiAgICBjb25zdCBzcGlubmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcblxuICAgIGlmIChvcHRpb25zLmVjaG8pIHtcbiAgICAgIC8vIFNob3cgb3V0cHV0IGFzIGhpZ2hsaWdodGVkIHNvdXJjZVxuICAgICAgY29uc3QgcHJlRWxlbSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJwcmVcIik7XG4gICAgICBjb250YWluZXIuY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlXCI7XG4gICAgICBwcmVFbGVtLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZSByXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFIoYmxvY2suY29kZSkpO1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItZ3JvdyBzcGlubmVyLWdyb3ctc20gbS0yIHBvc2l0aW9uLWFic29sdXRlIHRvcC0wIGVuZC0wXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHByZUVsZW0pO1xuICAgIH0gZWxzZSB7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ib3JkZXIgc3Bpbm5lci1ib3JkZXItc21cIjtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICB9XG5cbiAgICB5aWVsZCBjb250YWluZXI7XG4gIH1cblxuICB3ZWJST2pzLnJlbmRlcmVkT2pzW1wiMTFcIl0gPSB0cnVlO1xuICB5aWVsZCBhd2FpdCByZXN1bHQ7XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTAiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzEwO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItMTAiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3dlYnJfdmFsdWVfMTAgPSB7XG4gIGNvbnN0IHsgaGlnaGxpZ2h0UiwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTAtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICAvLyBEZWZhdWx0IGV2YWx1YXRpb24gY29uZmlndXJhdGlvblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7XG4gICAgaWQ6IFwid2Vici0xMC1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBSIGNvZGVcbiAgY29uc3QgcmVzdWx0ID0gd2ViUk9qcy5wcm9jZXNzKHtjb2RlOiBibG9jay5jb2RlLCBvcHRpb25zfSwge2hpc3Q1MWosIGNjNTJqfSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjEwXCIgaW4gd2ViUk9qcy5yZW5kZXJlZE9qcykpIHtcbiAgICBjb25zdCBjb250YWluZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuICAgIGNvbnN0IHNwaW5uZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuXG4gICAgaWYgKG9wdGlvbnMuZWNobykge1xuICAgICAgLy8gU2hvdyBvdXRwdXQgYXMgaGlnaGxpZ2h0ZWQgc291cmNlXG4gICAgICBjb25zdCBwcmVFbGVtID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcInByZVwiKTtcbiAgICAgIGNvbnRhaW5lci5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGVcIjtcbiAgICAgIHByZUVsZW0uY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlIHJcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoaGlnaGxpZ2h0UihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHdlYlJPanMucmVuZGVyZWRPanNbXCIxMFwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC05IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV85O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItOSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJfd2Vicl92YWx1ZV85ID0ge1xuICBjb25zdCB7IGhpZ2hsaWdodFIsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTktY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICAvLyBEZWZhdWx0IGV2YWx1YXRpb24gY29uZmlndXJhdGlvblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7XG4gICAgaWQ6IFwid2Vici05LWNvbnRlbnRzXCIsXG4gICAgZWNobzogdHJ1ZSxcbiAgICBvdXRwdXQ6IHRydWVcbiAgfSwgYmxvY2suYXR0cik7XG5cbiAgLy8gRXZhbHVhdGUgdGhlIHByb3ZpZGVkIFIgY29kZVxuICBjb25zdCByZXN1bHQgPSB3ZWJST2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7Y3Y1MWosIGM1MSwgc2g1MWp9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiOVwiIGluIHdlYlJPanMucmVuZGVyZWRPanMpKSB7XG4gICAgY29uc3QgY29udGFpbmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcbiAgICBjb25zdCBzcGlubmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcblxuICAgIGlmIChvcHRpb25zLmVjaG8pIHtcbiAgICAgIC8vIFNob3cgb3V0cHV0IGFzIGhpZ2hsaWdodGVkIHNvdXJjZVxuICAgICAgY29uc3QgcHJlRWxlbSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJwcmVcIik7XG4gICAgICBjb250YWluZXIuY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlXCI7XG4gICAgICBwcmVFbGVtLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZSByXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFIoYmxvY2suY29kZSkpO1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItZ3JvdyBzcGlubmVyLWdyb3ctc20gbS0yIHBvc2l0aW9uLWFic29sdXRlIHRvcC0wIGVuZC0wXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHByZUVsZW0pO1xuICAgIH0gZWxzZSB7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ib3JkZXIgc3Bpbm5lci1ib3JkZXItc21cIjtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICB9XG5cbiAgICB5aWVsZCBjb250YWluZXI7XG4gIH1cblxuICB3ZWJST2pzLnJlbmRlcmVkT2pzW1wiOVwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC04IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV84O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItOCIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJfd2Vicl92YWx1ZV84ID0ge1xuICBjb25zdCB7IGhpZ2hsaWdodFIsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTgtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICAvLyBEZWZhdWx0IGV2YWx1YXRpb24gY29uZmlndXJhdGlvblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7XG4gICAgaWQ6IFwid2Vici04LWNvbnRlbnRzXCIsXG4gICAgZWNobzogdHJ1ZSxcbiAgICBvdXRwdXQ6IHRydWVcbiAgfSwgYmxvY2suYXR0cik7XG5cbiAgLy8gRXZhbHVhdGUgdGhlIHByb3ZpZGVkIFIgY29kZVxuICBjb25zdCByZXN1bHQgPSB3ZWJST2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7cDQxLCBzNDFqLCBjNDF9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiOFwiIGluIHdlYlJPanMucmVuZGVyZWRPanMpKSB7XG4gICAgY29uc3QgY29udGFpbmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcbiAgICBjb25zdCBzcGlubmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcblxuICAgIGlmIChvcHRpb25zLmVjaG8pIHtcbiAgICAgIC8vIFNob3cgb3V0cHV0IGFzIGhpZ2hsaWdodGVkIHNvdXJjZVxuICAgICAgY29uc3QgcHJlRWxlbSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJwcmVcIik7XG4gICAgICBjb250YWluZXIuY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlXCI7XG4gICAgICBwcmVFbGVtLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZSByXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFIoYmxvY2suY29kZSkpO1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItZ3JvdyBzcGlubmVyLWdyb3ctc20gbS0yIHBvc2l0aW9uLWFic29sdXRlIHRvcC0wIGVuZC0wXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHByZUVsZW0pO1xuICAgIH0gZWxzZSB7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ib3JkZXIgc3Bpbm5lci1ib3JkZXItc21cIjtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICB9XG5cbiAgICB5aWVsZCBjb250YWluZXI7XG4gIH1cblxuICB3ZWJST2pzLnJlbmRlcmVkT2pzW1wiOFwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC03IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV83O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItNyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJfd2Vicl92YWx1ZV83ID0ge1xuICBjb25zdCB7IGhpZ2hsaWdodFIsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTctY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICAvLyBEZWZhdWx0IGV2YWx1YXRpb24gY29uZmlndXJhdGlvblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7XG4gICAgaWQ6IFwid2Vici03LWNvbnRlbnRzXCIsXG4gICAgZWNobzogdHJ1ZSxcbiAgICBvdXRwdXQ6IHRydWVcbiAgfSwgYmxvY2suYXR0cik7XG5cbiAgLy8gRXZhbHVhdGUgdGhlIHByb3ZpZGVkIFIgY29kZVxuICBjb25zdCByZXN1bHQgPSB3ZWJST2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7bTMxLCBjMzEsIHAzMSwgczMxan0pO1xuXG4gIC8vIEVhcmx5IHlpZWxkIHdoaWxlIHdlIHdhaXQgZm9yIHRoZSBmaXJzdCBldmFsdWF0aW9uIGFuZCByZW5kZXJcbiAgaWYgKG9wdGlvbnMub3V0cHV0ICYmICEoXCI3XCIgaW4gd2ViUk9qcy5yZW5kZXJlZE9qcykpIHtcbiAgICBjb25zdCBjb250YWluZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuICAgIGNvbnN0IHNwaW5uZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuXG4gICAgaWYgKG9wdGlvbnMuZWNobykge1xuICAgICAgLy8gU2hvdyBvdXRwdXQgYXMgaGlnaGxpZ2h0ZWQgc291cmNlXG4gICAgICBjb25zdCBwcmVFbGVtID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcInByZVwiKTtcbiAgICAgIGNvbnRhaW5lci5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGVcIjtcbiAgICAgIHByZUVsZW0uY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlIHJcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoaGlnaGxpZ2h0UihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHdlYlJPanMucmVuZGVyZWRPanNbXCI3XCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTYiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzY7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici02IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6Il93ZWJyX3ZhbHVlXzYgPSB7XG4gIGNvbnN0IHsgaGlnaGxpZ2h0UiwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItNi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXZhbHVhdGlvbiBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHtcbiAgICBpZDogXCJ3ZWJyLTYtY29udGVudHNcIixcbiAgICBlY2hvOiB0cnVlLFxuICAgIG91dHB1dDogdHJ1ZVxuICB9LCBibG9jay5hdHRyKTtcblxuICAvLyBFdmFsdWF0ZSB0aGUgcHJvdmlkZWQgUiBjb2RlXG4gIGNvbnN0IHJlc3VsdCA9IHdlYlJPanMucHJvY2Vzcyh7Y29kZTogYmxvY2suY29kZSwgb3B0aW9uc30sIHtjdjIzaiwgc2gyM2p9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiNlwiIGluIHdlYlJPanMucmVuZGVyZWRPanMpKSB7XG4gICAgY29uc3QgY29udGFpbmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcbiAgICBjb25zdCBzcGlubmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcblxuICAgIGlmIChvcHRpb25zLmVjaG8pIHtcbiAgICAgIC8vIFNob3cgb3V0cHV0IGFzIGhpZ2hsaWdodGVkIHNvdXJjZVxuICAgICAgY29uc3QgcHJlRWxlbSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJwcmVcIik7XG4gICAgICBjb250YWluZXIuY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlXCI7XG4gICAgICBwcmVFbGVtLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZSByXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFIoYmxvY2suY29kZSkpO1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItZ3JvdyBzcGlubmVyLWdyb3ctc20gbS0yIHBvc2l0aW9uLWFic29sdXRlIHRvcC0wIGVuZC0wXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHByZUVsZW0pO1xuICAgIH0gZWxzZSB7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ib3JkZXIgc3Bpbm5lci1ib3JkZXItc21cIjtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICB9XG5cbiAgICB5aWVsZCBjb250YWluZXI7XG4gIH1cblxuICB3ZWJST2pzLnJlbmRlcmVkT2pzW1wiNlwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC01IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV81O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItNSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJfd2Vicl92YWx1ZV81ID0ge1xuICBjb25zdCB7IGhpZ2hsaWdodFIsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTUtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICAvLyBEZWZhdWx0IGV2YWx1YXRpb24gY29uZmlndXJhdGlvblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7XG4gICAgaWQ6IFwid2Vici01LWNvbnRlbnRzXCIsXG4gICAgZWNobzogdHJ1ZSxcbiAgICBvdXRwdXQ6IHRydWVcbiAgfSwgYmxvY2suYXR0cik7XG5cbiAgLy8gRXZhbHVhdGUgdGhlIHByb3ZpZGVkIFIgY29kZVxuICBjb25zdCByZXN1bHQgPSB3ZWJST2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7cDIyLCBzMjJqLCBjMjJ9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiNVwiIGluIHdlYlJPanMucmVuZGVyZWRPanMpKSB7XG4gICAgY29uc3QgY29udGFpbmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcbiAgICBjb25zdCBzcGlubmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcblxuICAgIGlmIChvcHRpb25zLmVjaG8pIHtcbiAgICAgIC8vIFNob3cgb3V0cHV0IGFzIGhpZ2hsaWdodGVkIHNvdXJjZVxuICAgICAgY29uc3QgcHJlRWxlbSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJwcmVcIik7XG4gICAgICBjb250YWluZXIuY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlXCI7XG4gICAgICBwcmVFbGVtLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZSByXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFIoYmxvY2suY29kZSkpO1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItZ3JvdyBzcGlubmVyLWdyb3ctc20gbS0yIHBvc2l0aW9uLWFic29sdXRlIHRvcC0wIGVuZC0wXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHByZUVsZW0pO1xuICAgIH0gZWxzZSB7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ib3JkZXIgc3Bpbm5lci1ib3JkZXItc21cIjtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICB9XG5cbiAgICB5aWVsZCBjb250YWluZXI7XG4gIH1cblxuICB3ZWJST2pzLnJlbmRlcmVkT2pzW1wiNVwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC00IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV80O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItNCIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJfd2Vicl92YWx1ZV80ID0ge1xuICBjb25zdCB7IGhpZ2hsaWdodFIsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTQtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICAvLyBEZWZhdWx0IGV2YWx1YXRpb24gY29uZmlndXJhdGlvblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7XG4gICAgaWQ6IFwid2Vici00LWNvbnRlbnRzXCIsXG4gICAgZWNobzogdHJ1ZSxcbiAgICBvdXRwdXQ6IHRydWVcbiAgfSwgYmxvY2suYXR0cik7XG5cbiAgLy8gRXZhbHVhdGUgdGhlIHByb3ZpZGVkIFIgY29kZVxuICBjb25zdCByZXN1bHQgPSB3ZWJST2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7cDIxLCBzMjFqfSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjRcIiBpbiB3ZWJST2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgclwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChoaWdobGlnaHRSKGJsb2NrLmNvZGUpKTtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWdyb3cgc3Bpbm5lci1ncm93LXNtIG0tMiBwb3NpdGlvbi1hYnNvbHV0ZSB0b3AtMCBlbmQtMFwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChwcmVFbGVtKTtcbiAgICB9IGVsc2Uge1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItYm9yZGVyIHNwaW5uZXItYm9yZGVyLXNtXCI7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgfVxuXG4gICAgeWllbGQgY29udGFpbmVyO1xuICB9XG5cbiAgd2ViUk9qcy5yZW5kZXJlZE9qc1tcIjRcIl0gPSB0cnVlO1xuICB5aWVsZCBhd2FpdCByZXN1bHQ7XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtMyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMztcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3dlYnJfdmFsdWVfMyA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRSLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcIndlYnItMy1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBSIGNvZGVcbiAgY29uc3QgcmVzdWx0ID0gd2ViUk9qcy5wcm9jZXNzKHtjb2RlOiBibG9jay5jb2RlLCBvcHRpb25zfSwge2gwXzEyLCBoMV8xMn0pO1xuXG4gIC8vIEVhcmx5IHlpZWxkIHdoaWxlIHdlIHdhaXQgZm9yIHRoZSBmaXJzdCBldmFsdWF0aW9uIGFuZCByZW5kZXJcbiAgaWYgKG9wdGlvbnMub3V0cHV0ICYmICEoXCIzXCIgaW4gd2ViUk9qcy5yZW5kZXJlZE9qcykpIHtcbiAgICBjb25zdCBjb250YWluZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuICAgIGNvbnN0IHNwaW5uZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuXG4gICAgaWYgKG9wdGlvbnMuZWNobykge1xuICAgICAgLy8gU2hvdyBvdXRwdXQgYXMgaGlnaGxpZ2h0ZWQgc291cmNlXG4gICAgICBjb25zdCBwcmVFbGVtID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcInByZVwiKTtcbiAgICAgIGNvbnRhaW5lci5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGVcIjtcbiAgICAgIHByZUVsZW0uY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlIHJcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoaGlnaGxpZ2h0UihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHdlYlJPanMucmVuZGVyZWRPanNbXCIzXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzI7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0yIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6Il93ZWJyX3ZhbHVlXzIgPSB7XG4gIGNvbnN0IHsgaGlnaGxpZ2h0UiwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXZhbHVhdGlvbiBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHtcbiAgICBpZDogXCJ3ZWJyLTItY29udGVudHNcIixcbiAgICBlY2hvOiB0cnVlLFxuICAgIG91dHB1dDogdHJ1ZVxuICB9LCBibG9jay5hdHRyKTtcblxuICAvLyBFdmFsdWF0ZSB0aGUgcHJvdmlkZWQgUiBjb2RlXG4gIGNvbnN0IHJlc3VsdCA9IHdlYlJPanMucHJvY2Vzcyh7Y29kZTogYmxvY2suY29kZSwgb3B0aW9uc30sIHtiMTF9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiMlwiIGluIHdlYlJPanMucmVuZGVyZWRPanMpKSB7XG4gICAgY29uc3QgY29udGFpbmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcbiAgICBjb25zdCBzcGlubmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKTtcblxuICAgIGlmIChvcHRpb25zLmVjaG8pIHtcbiAgICAgIC8vIFNob3cgb3V0cHV0IGFzIGhpZ2hsaWdodGVkIHNvdXJjZVxuICAgICAgY29uc3QgcHJlRWxlbSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJwcmVcIik7XG4gICAgICBjb250YWluZXIuY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlXCI7XG4gICAgICBwcmVFbGVtLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZSByXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKGhpZ2hsaWdodFIoYmxvY2suY29kZSkpO1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItZ3JvdyBzcGlubmVyLWdyb3ctc20gbS0yIHBvc2l0aW9uLWFic29sdXRlIHRvcC0wIGVuZC0wXCI7XG4gICAgICBwcmVFbGVtLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHByZUVsZW0pO1xuICAgIH0gZWxzZSB7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ib3JkZXIgc3Bpbm5lci1ib3JkZXItc21cIjtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICB9XG5cbiAgICB5aWVsZCBjb250YWluZXI7XG4gIH1cblxuICB3ZWJST2pzLnJlbmRlcmVkT2pzW1wiMlwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItMSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJfd2Vicl92YWx1ZV8xID0ge1xuICBjb25zdCB7IGhpZ2hsaWdodFIsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTEtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICAvLyBEZWZhdWx0IGV2YWx1YXRpb24gY29uZmlndXJhdGlvblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7XG4gICAgaWQ6IFwid2Vici0xLWNvbnRlbnRzXCIsXG4gICAgZWNobzogdHJ1ZSxcbiAgICBvdXRwdXQ6IHRydWVcbiAgfSwgYmxvY2suYXR0cik7XG5cbiAgLy8gRXZhbHVhdGUgdGhlIHByb3ZpZGVkIFIgY29kZVxuICBjb25zdCByZXN1bHQgPSB3ZWJST2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjFcIiBpbiB3ZWJST2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgclwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChoaWdobGlnaHRSKGJsb2NrLmNvZGUpKTtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWdyb3cgc3Bpbm5lci1ncm93LXNtIG0tMiBwb3NpdGlvbi1hYnNvbHV0ZSB0b3AtMCBlbmQtMFwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChwcmVFbGVtKTtcbiAgICB9IGVsc2Uge1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItYm9yZGVyIHNwaW5uZXItYm9yZGVyLXNtXCI7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgfVxuXG4gICAgeWllbGQgY29udGFpbmVyO1xuICB9XG5cbiAgd2ViUk9qcy5yZW5kZXJlZE9qc1tcIjFcIl0gPSB0cnVlO1xuICB5aWVsZCBhd2FpdCByZXN1bHQ7XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici1wcmVsdWRlIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoid2ViUk9qcyA9IHtcbiAgY29uc3QgeyBXZWJSLCBDaGFubmVsVHlwZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZS5XZWJSO1xuICBjb25zdCB7XG4gICAgV2ViUkV2YWx1YXRvcixcbiAgICBXZWJSRW52aXJvbm1lbnRNYW5hZ2VyLFxuICAgIHNldHVwUixcbiAgICBiNjREZWNvZGUsXG4gICAgY29sbGFwc2VQYXRoXG4gIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHN0YXR1c0NvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1zdGF0dXNcIik7XG4gIGNvbnN0IGluZGljYXRvckNvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGluZGljYXRvckNvbnRhaW5lci5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpO1xuXG4gIGxldCBzdGF0dXNUZXh0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKVxuICBzdGF0dXNUZXh0LmNsYXNzTGlzdCA9IFwiZXhlcmNpc2UtbG9hZGluZy1kZXRhaWxzXCI7XG4gIHN0YXR1c1RleHQgPSBzdGF0dXNDb250YWluZXIuYXBwZW5kQ2hpbGQoc3RhdHVzVGV4dCk7XG4gIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5pdGlhbGlzZWA7XG5cbiAgLy8gSG9pc3QgaW5kaWNhdG9yIG91dCBmcm9tIGZpbmFsIHNsaWRlIHdoZW4gcnVubmluZyB1bmRlciByZXZlYWxcbiAgY29uc3QgcmV2ZWFsU3RhdHVzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgLmV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpZiAocmV2ZWFsU3RhdHVzKSB7XG4gICAgcmV2ZWFsU3RhdHVzLnJlbW92ZSgpO1xuICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsID4gLnNsaWRlc1wiKS5hcHBlbmRDaGlsZChyZXZlYWxTdGF0dXMpO1xuICB9XG5cbiAgLy8gTWFrZSBhbnkgcmV2ZWFsIHNsaWRlcyB3aXRoIGxpdmUgY2VsbHMgc2Nyb2xsYWJsZVxuICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKFwiLnJldmVhbCAuZXhlcmNpc2UtY2VsbFwiKS5mb3JFYWNoKChlbCkgPT4ge1xuICAgIGVsLmNsb3Nlc3QoJ3NlY3Rpb24uc2xpZGUnKS5jbGFzc0xpc3QuYWRkKFwic2Nyb2xsYWJsZVwiKTtcbiAgfSlcblxuICAvLyB3ZWJSIHN1cHBsZW1lbnRhbCBkYXRhIGFuZCBvcHRpb25zXG4gIGNvbnN0IGRhdGFDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItZGF0YVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGRhdGEgPSBKU09OLnBhcnNlKGI2NERlY29kZShkYXRhQ29udGVudCkpO1xuXG4gIC8vIEdyYWIgbGlzdCBvZiByZXNvdXJjZXMgdG8gYmUgZG93bmxvYWRlZFxuICBjb25zdCBmaWxlc0NvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwidmZzLWZpbGVcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBmaWxlcyA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGZpbGVzQ29udGVudCkpO1xuXG4gIC8vIEluaXRpYWxpc2Ugd2ViUiBhbmQgc2V0dXAgZm9yIFIgY29kZSBldmFsdWF0aW9uXG4gIGxldCB3ZWJSUHJvbWlzZSA9IChhc3luYyAod2ViUikgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgd2ViUmA7XG4gICAgYXdhaXQgd2ViUi5pbml0KCk7XG5cbiAgICAvLyBJbnN0YWxsIHByb3ZpZGVkIGxpc3Qgb2YgcGFja2FnZXNcbiAgICAvLyBFbnN1cmUgd2ViUiBkZWZhdWx0IHJlcG8gaXMgaW5jbHVkZWRcbiAgICBkYXRhLnBhY2thZ2VzLnJlcG9zLnB1c2goXCJodHRwczovL3JlcG8uci13YXNtLm9yZ1wiKVxuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIHdlYlIuZXZhbFJWb2lkKGBcbiAgICAgICAgd2Vicjo6aW5zdGFsbChwa2csIHJlcG9zID0gcmVwb3MpXG4gICAgICAgIGxpYnJhcnkocGtnLCBjaGFyYWN0ZXIub25seSA9IFRSVUUpXG4gICAgICBgLCB7IGVudjoge1xuICAgICAgICBwa2c6IHBrZyxcbiAgICAgICAgcmVwb3M6IGRhdGEucGFja2FnZXMucmVwb3MsXG4gICAgICB9fSk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgY29uc3QgYW5hbHlzaXMgPSBhd2FpdCB3ZWJSLkZTLmFuYWx5emVQYXRoKHBhdGgpO1xuICAgICAgICBpZiAoIWFuYWx5c2lzLmV4aXN0cykge1xuICAgICAgICAgIHRyeSB7XG4gICAgICAgICAgICBhd2FpdCB3ZWJSLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICAgIH0gY2F0Y2ggKGUpIHtcbiAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvcjogXCIke2UubWVzc2FnZX1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHJldHVybiBhd2FpdCB3ZWJSLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluc3RhbGxpbmcgd2ViUiBzaGltc2A7XG4gICAgYXdhaXQgd2ViUi5ldmFsUlZvaWQoYHdlYnI6OnNoaW1faW5zdGFsbCgpYCk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFdlYlIgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUih3ZWJSLCBkYXRhKTtcblxuICAgIHN0YXR1c1RleHQucmVtb3ZlKCk7XG4gICAgaWYgKHN0YXR1c0NvbnRhaW5lci5jaGlsZHJlbi5sZW5ndGggPT0gMCkge1xuICAgICAgc3RhdHVzQ29udGFpbmVyLnBhcmVudE5vZGUucmVtb3ZlKCk7XG4gICAgfVxuICAgIHJldHVybiB3ZWJSO1xuICB9KShuZXcgV2ViUihkYXRhLm9wdGlvbnMpKTtcblxuICAvLyBLZWVwIHRyYWNrIG9mIGluaXRpYWwgT0pTIGJsb2NrIHJlbmRlclxuICBjb25zdCByZW5kZXJlZE9qcyA9IHt9O1xuXG4gIGNvbnN0IHByb2Nlc3MgPSBhc3luYyAoY29udGV4dCwgaW5wdXRzKSA9PiB7XG4gICAgY29uc3Qgd2ViUiA9IGF3YWl0IHdlYlJQcm9taXNlO1xuICAgIGNvbnN0IGV2YWx1YXRvciA9IG5ldyBXZWJSRXZhbHVhdG9yKHdlYlIsIGNvbnRleHQpXG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHJvY2VzcyxcbiAgICB3ZWJSUHJvbWlzZSxcbiAgICByZW5kZXJlZE9qcyxcbiAgfTtcbn1cbiJ9XX0=
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+WyJleDJfZ3JvdXAzLmNzdiIsIm91dGxvb2tfZ3JvdXAzLmNzdiIsImhlbHBlcnMuUiJd
+</script>
+</section>
+
+</main>
+<!-- /main column -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IkhZUCA9IFtcIs68X0hGRCA9IM68X2Nob3dcIiwgXCLOvF9IRkQg4omgIM68X2Nob3cgKHR3by1zaWRlZClcIiwgXCLOvF9IRkQgPiDOvF9jaG93IChvbmUtc2lkZWQpXCIsIFwieMyEX0hGRCA9IHjMhF9jaG93XCIsIFwieMyEX0hGRCDiiaAgeMyEX2Nob3dcIiwgXCLOsl9kaWV0ID0gMFwiLCBcIs6yX2RpZXQg4omgIDBcIiwgXCLOsl9kaWV0ID0gMCBhdCBlcXVhbCB2YWx1ZXMgb2YgdGhlIG90aGVyIGNvdmFyaWF0ZXNcIiwgXCJpbnN1bGluIGlzIG5vcm1hbGx5IGRpc3RyaWJ1dGVkXCJdXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgYjExID0gSW5wdXRzLnNlbGVjdChbXCJkaWV0XCIsIFwiY2FnZVwiLCBcInBsYXRlXCIsIFwibW91c2VfaWRcIiwgXCJkaWV0IHggY2FnZVwiLCBcImRpZXQgeCBwbGF0ZVwiLCBcImNhZ2UgeCBwbGF0ZVwiXSwge2xhYmVsOiBcIjEuMSBDb3VudCByb3dzIGJ5XCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIGgwXzEyID0gSW5wdXRzLnNlbGVjdChIWVAsIHtsYWJlbDogXCIxLjIgTnVsbCBoeXBvdGhlc2lzIEgwXCJ9KVxudmlld29mIGgxXzEyID0gSW5wdXRzLnNlbGVjdChIWVAsIHtsYWJlbDogXCIxLjIgQWx0ZXJuYXRpdmUgSDFcIiwgdmFsdWU6IEhZUFsxXX0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgcDIxID0gSW5wdXRzLnNlbGVjdChbXCIobm9uZSlcIiwgXCJEb3QgcGxvdCwgc3RhcnQgd2VpZ2h0XCIsIFwiRG90IHBsb3QsIGZhc3RpbmcgZ2x1Y29zZSAod2VlayAwKVwiLCBcIkRvdCBwbG90LCBmaW5hbCB3ZWlnaHRcIiwgXCJCb3hwbG90LCBzdGFydCB3ZWlnaHRcIiwgXCJCb3hwbG90LCBmYXN0aW5nIGdsdWNvc2UgKHdlZWsgMClcIiwgXCJCb3hwbG90LCBmaW5hbCB3ZWlnaHRcIl0sIHtsYWJlbDogXCIyLjEgUGxvdFwifSlcbnZpZXdvZiBzMjEgPSBJbnB1dHMuY2hlY2tib3goW1wibWVhbiBhbmQgU0QgcGVyIGRpZXQ6IHN0YXJ0IHdlaWdodFwiLCBcIm1lYW4gYW5kIFNEIHBlciBkaWV0OiBmYXN0aW5nIGdsdWNvc2UgKHdlZWsgMClcIiwgXCJtZWFuIGFuZCBTRCBwZXIgZGlldDogZmluYWwgd2VpZ2h0XCIsIFwiZGlmZmVyZW5jZSBIRkQgLSBjaG93IHdpdGggOTUlIENJOiBzdGFydCB3ZWlnaHRcIiwgXCJkaWZmZXJlbmNlIEhGRCAtIGNob3cgd2l0aCA5NSUgQ0k6IGZhc3RpbmcgZ2x1Y29zZSAod2VlayAwKVwiLCBcImRpZmZlcmVuY2UgSEZEIC0gY2hvdyB3aXRoIDk1JSBDSTogZmluYWwgd2VpZ2h0XCJdLCB7bGFiZWw6IFwiMi4xIE51bWJlcnNcIiwgdmFsdWU6IFtdfSlcbnMyMWogPSBzMjEuam9pbihcIixcIilcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBwMjIgPSBJbnB1dHMuc2VsZWN0KFtcIihub25lKVwiLCBcIlNjYXR0ZXIsIGluc3VsaW4gYWdhaW5zdCBzdGFydCB3ZWlnaHRcIiwgXCJTY2F0dGVyLCBpbnN1bGluIGFnYWluc3QgZmFzdGluZyBnbHVjb3NlICh3ZWVrIDApXCIsIFwiU2NhdHRlciwgaW5zdWxpbiBhZ2FpbnN0IGZpbmFsIHdlaWdodFwiLCBcIkRvdCBwbG90LCBpbnN1bGluIGJ5IHBsYXRlXCIsIFwiRG90IHBsb3QsIGluc3VsaW4gYnkgY2FnZVwiXSwge2xhYmVsOiBcIjIuMiBQbG90XCJ9KVxudmlld29mIHMyMiA9IElucHV0cy5jaGVja2JveChbXCJjb3JyZWxhdGlvbiB3aXRoIHN0YXJ0IHdlaWdodCwgYWxsIG1pY2VcIiwgXCJjb3JyZWxhdGlvbiB3aXRoIGZhc3RpbmcgZ2x1Y29zZSAod2VlayAwKSwgYWxsIG1pY2VcIiwgXCJjb3JyZWxhdGlvbiB3aXRoIGZpbmFsIHdlaWdodCwgYWxsIG1pY2VcIiwgXCJjb3JyZWxhdGlvbiB3aXRoIHN0YXJ0IHdlaWdodCwgd2l0aGluIGNob3dcIiwgXCJjb3JyZWxhdGlvbiB3aXRoIGZhc3RpbmcgZ2x1Y29zZSAod2VlayAwKSwgd2l0aGluIGNob3dcIiwgXCJjb3JyZWxhdGlvbiB3aXRoIGZpbmFsIHdlaWdodCwgd2l0aGluIGNob3dcIiwgXCJjb3JyZWxhdGlvbiB3aXRoIHN0YXJ0IHdlaWdodCwgd2l0aGluIEhGRFwiLCBcImNvcnJlbGF0aW9uIHdpdGggZmFzdGluZyBnbHVjb3NlICh3ZWVrIDApLCB3aXRoaW4gSEZEXCIsIFwiY29ycmVsYXRpb24gd2l0aCBmaW5hbCB3ZWlnaHQsIHdpdGhpbiBIRkRcIiwgXCJtZWFuIGluc3VsaW4gcGVyIHBsYXRlXCIsIFwibWVhbiBpbnN1bGluIHBlciBjYWdlXCJdLCB7bGFiZWw6IFwiMi4yIE51bWJlcnNcIiwgdmFsdWU6IFtdfSlcbnMyMmogPSBzMjIuam9pbihcIixcIilcbnZpZXdvZiBjMjIgPSBJbnB1dHMuc2VsZWN0KFtcIm9yaWdpbmFsXCIsIFwibG9nMlwiXSwge2xhYmVsOiBcIjIuMiBTY2FsZVwifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBjdjIzID0gSW5wdXRzLmNoZWNrYm94KFtcInN0YXJ0IHdlaWdodFwiLCBcImZhc3RpbmcgZ2x1Y29zZSAod2VlayAwKVwiLCBcImZpbmFsIHdlaWdodFwiLCBcInBsYXRlXCIsIFwiY2FnZVwiXSwge2xhYmVsOiBcIjIuMyBDb3ZhcmlhdGVzIChkaWV0IGlzIGFsd2F5cyBpbiB0aGUgbW9kZWwpXCIsIHZhbHVlOiBbXX0pXG5jdjIzaiA9IGN2MjMuam9pbihcIixcIilcbnZpZXdvZiBzaDIzID0gSW5wdXRzLmNoZWNrYm94KFtcImNvZWZmaWNpZW50IHRhYmxlXCIsIFwiZGlldCBlZmZlY3Qgd2l0aCBhbmQgd2l0aG91dCB0aGUgY2hvc2VuIGNvdmFyaWF0ZXNcIl0sIHtsYWJlbDogXCIyLjMgRGlzcGxheVwiLCB2YWx1ZTogW119KVxuc2gyM2ogPSBzaDIzLmpvaW4oXCIsXCIpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTciLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgbTMxID0gSW5wdXRzLnNlbGVjdChbXCJsaW5lYXIgbW9kZWwgKGVxdWFsIHZhcmlhbmNlcylcIiwgXCJXZWxjaCB0LXRlc3RcIiwgXCJXaWxjb3hvbiByYW5rLXN1bSB0ZXN0XCJdLCB7bGFiZWw6IFwiMy4xIE1ldGhvZFwifSlcbnZpZXdvZiBjMzEgPSBJbnB1dHMuc2VsZWN0KFtcIm9yaWdpbmFsXCIsIFwibG9nMlwiXSwge2xhYmVsOiBcIjMuMSBTY2FsZVwifSlcbnZpZXdvZiBwMzEgPSBJbnB1dHMuc2VsZWN0KFtcIihub25lKVwiLCBcIkRvdCBwbG90LCBieSBkaWV0XCIsIFwiQm94cGxvdCwgYnkgZGlldFwiLCBcIk1lYW4gYW5kIDk1JSBDSSwgYnkgZGlldFwiXSwge2xhYmVsOiBcIjMuMSBQbG90XCJ9KVxudmlld29mIHMzMSA9IElucHV0cy5jaGVja2JveChbXCJlc3RpbWF0ZVwiLCBcIlNFXCIsIFwidCBzdGF0aXN0aWNcIiwgXCJkZlwiLCBcIjk1JSBDSVwiLCBcInAtdmFsdWVcIiwgXCJmb2xkIGNoYW5nZSB3aXRoIDk1JSBDSSAobG9nMiBzY2FsZSlcIl0sIHtsYWJlbDogXCIzLjEgTnVtYmVyc1wiLCB2YWx1ZTogW119KVxuczMxaiA9IHMzMS5qb2luKFwiLFwiKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC04IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIHA0MSA9IElucHV0cy5zZWxlY3QoW1wiKG5vbmUpXCIsIFwiUVEgcGxvdCBvZiB0aGUgcmVzaWR1YWxzXCIsIFwiSGlzdG9ncmFtIG9mIHRoZSByZXNpZHVhbHNcIiwgXCJSZXNpZHVhbHMgYWdhaW5zdCBmaXR0ZWQgdmFsdWVzXCIsIFwiUVEgcGxvdCBvZiB0aGUgcmF3IHZhbHVlcyAoZGlldHMgcG9vbGVkKVwiXSwge2xhYmVsOiBcIjQuMSBQbG90XCJ9KVxudmlld29mIHM0MSA9IElucHV0cy5jaGVja2JveChbXCJTaGFwaXJvLVdpbGsgdGVzdCBvZiB0aGUgcmVzaWR1YWxzXCIsIFwiU2hhcGlyby1XaWxrIHRlc3Qgb2YgdGhlIHJhdyB2YWx1ZXMgKGRpZXRzIHBvb2xlZClcIiwgXCJTRCBwZXIgZGlldFwiLCBcInNrZXduZXNzIG9mIHRoZSByZXNpZHVhbHNcIl0sIHtsYWJlbDogXCI0LjEgVGVzdHNcIiwgdmFsdWU6IFtdfSlcbnM0MWogPSBzNDEuam9pbihcIixcIilcbnZpZXdvZiBjNDEgPSBJbnB1dHMuc2VsZWN0KFtcIm9yaWdpbmFsXCIsIFwibG9nMlwiXSwge2xhYmVsOiBcIjQuMSBTY2FsZVwifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtOSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBjdjUxID0gSW5wdXRzLmNoZWNrYm94KFtcInN0YXJ0IHdlaWdodFwiLCBcImZhc3RpbmcgZ2x1Y29zZSAod2VlayAwKVwiLCBcImZpbmFsIHdlaWdodFwiLCBcInBsYXRlXCIsIFwiY2FnZVwiXSwge2xhYmVsOiBcIjUuMSBDb3ZhcmlhdGVzIChkaWV0IGlzIGFsd2F5cyBpbiB0aGUgbW9kZWwpXCIsIHZhbHVlOiBbXX0pXG5jdjUxaiA9IGN2NTEuam9pbihcIixcIilcbnZpZXdvZiBjNTEgPSBJbnB1dHMuc2VsZWN0KFtcImxvZzJcIiwgXCJvcmlnaW5hbFwiXSwge2xhYmVsOiBcIjUuMSBTY2FsZVwifSlcbm81MSA9IFwibWljZSAoMjAgcm93cylcIlxudmlld29mIHNoNTEgPSBJbnB1dHMuY2hlY2tib3goW1wiY29lZmZpY2llbnQgdGFibGVcIiwgXCJmaXQgc3RhdGlzdGljc1wiLCBcIlFRIHBsb3Qgb2YgdGhlIHJlc2lkdWFsc1wiLCBcInJlc2lkdWFscyBhZ2FpbnN0IGZpdHRlZCB2YWx1ZXNcIl0sIHtsYWJlbDogXCI1LjEgRGlzcGxheVwiLCB2YWx1ZTogW119KVxuc2g1MWogPSBzaDUxLmpvaW4oXCIsXCIpXG5zdGF0ZSA9ICh7fSlcbnsgc3RhdGUuc3BlYyA9IFtjdjUxLmpvaW4oXCIrXCIpLCBjNTEsIG81MV0uam9pbihcIjtcIik7IHJldHVybiBodG1sYDxzcGFuPjwvc3Bhbj5gOyB9XG52aWV3b2YgaGlzdDUxID0gSW5wdXRzLmJ1dHRvbihbW1wiQWRkIGN1cnJlbnQgbW9kZWwgdG8gY29tcGFyaXNvblwiLCB2ID0+IFsuLi52LCBzdGF0ZS5zcGVjXV0sIFtcIkNsZWFyIGNvbXBhcmlzb25cIiwgdiA9PiBbXV1dLCB7dmFsdWU6IFtdfSlcbmhpc3Q1MWogPSBoaXN0NTEuam9pbihcInxcIilcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTAiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgY2M1MiA9IElucHV0cy5jaGVja2JveChbXCJjb3ZhcmlhdGVzXCIsIFwic2NhbGVcIiwgXCJkaWV0IGVzdGltYXRlXCIsIFwiU0VcIiwgXCI5NSUgQ0lcIiwgXCJwLXZhbHVlXCIsIFwiUjJcIiwgXCJhZGp1c3RlZCBSMlwiLCBcIkFJQ1wiLCBcIkJJQ1wiLCBcIm5cIl0sIHtsYWJlbDogXCI1LjIgQ29sdW1uc1wiLCB2YWx1ZTogW119KVxuY2M1MmogPSBjYzUyLmpvaW4oXCIsXCIpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTExIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIG02MSA9IElucHV0cy5jaGVja2JveChbXCJsbTogZGlldFwiLCBcImxtOiBkaWV0ICsgcGxhdGUgKGZpeGVkKVwiLCBcIm1peGVkIG1vZGVsOiBkaWV0LCByYW5kb20gY2FnZSBlZmZlY3RcIiwgXCJtaXhlZCBtb2RlbDogZGlldCwgcmFuZG9tIHBsYXRlIGVmZmVjdFwiLCBcIm1peGVkIG1vZGVsOiBkaWV0ICsgc3RhcnQgd2VpZ2h0LCByYW5kb20gcGxhdGUgZWZmZWN0XCJdLCB7bGFiZWw6IFwiNi4xIE1ldGhvZHNcIiwgdmFsdWU6IFtdfSlcbm02MWogPSBtNjEuam9pbihcInxcIilcbnZpZXdvZiBjNjEgPSBJbnB1dHMuY2hlY2tib3goW1wiZXN0aW1hdGVcIiwgXCJTRVwiLCBcImRmXCIsIFwiQ0lfbG93XCIsIFwiQ0lfaGlnaFwiLCBcInBfdmFsdWVcIiwgXCJTRF9yYW5kb21cIiwgXCJTRF9yZXNpZHVhbFwiXSwge2xhYmVsOiBcIjYuMSBDb2x1bW5zXCIsIHZhbHVlOiBbXX0pXG5jNjFqID0gYzYxLmpvaW4oXCIsXCIpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2IxMScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdoMF8xMicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdoMV8xMicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwMjEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnczIxJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3AyMicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzMjInKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYzIyJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2N2MjMnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnc2gyMycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtMzEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYzMxJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3AzMScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzMzEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncDQxJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3M0MScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdjNDEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnY3Y1MScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdjNTEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnc2g1MScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdoaXN0NTEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnY2M1MicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtNjEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYzYxJykifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../..";
+window._ojs.paths.runtimeToRoot = "../../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

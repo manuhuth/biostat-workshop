@@ -1,0 +1,4 @@
+"method","estimate","SE","df","CI_low","CI_high","p_value","SD_mouse","SD_residual"
+"lm on end values (unpaired)",1.479,0.353,18,0.737,2.22,0.00055,NA,NA
+"lm on change from baseline (paired)",1.417,0.261,18,0.87,1.965,3.6e-05,NA,NA
+"mixed model with random mouse effect (diet x week)",1.417,0.261,18,0.87,1.965,3.6e-05,0.628,0.412
