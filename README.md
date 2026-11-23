@@ -1,6 +1,6 @@
-# Biostatistics Workshop: Exercise Pages
+# Biostatistics Workshop
 
-The pages run R in the browser; no installation is needed. The first load takes about a minute.
+The exercise pages run R in the browser; no installation is needed. The first load takes about a minute.
 
 ## Slides (PDF)
 
