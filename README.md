@@ -5,7 +5,7 @@ The exercise pages run R in the browser; no installation is needed. The first lo
 ## Slides (PDF)
 
 - [Lecture 1: Descriptive Statistics](https://manuhuth.github.io/biostat-workshop/slides/lecture1_descriptive_statistics.pdf)
-- [Lecture 2: Statistical Modelling](https://manuhuth.github.io/biostat-workshop/slides/lecture2_statistical_modelling.pdf)
+- [Lecture 2: Statistical Testing and Modelling](https://manuhuth.github.io/biostat-workshop/slides/lecture2_statistical_modelling.pdf)
 
 ## Exercise 1: Descriptive Statistics
 
